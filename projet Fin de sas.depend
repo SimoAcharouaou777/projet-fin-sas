@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1695400196 source:c:\users\youcode\documents\projet fin de sas\main.c
+1695485975 source:c:\users\youcode\documents\projet fin de sas\main.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
+	<time.h>
 
