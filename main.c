@@ -5,7 +5,7 @@
 // projet fin de sas
 time_t current_time;
 struct tm *time_info;
-int count = 0;
+int count = 0; // to count how many tach are created or deleated
 int s=0; // to know how many tach done
 int z=0; // to know how many tach undone
 void menu(void)
@@ -28,7 +28,7 @@ void NouvellTach(void)
     printf("|[1]    To do           | \n");
     printf("|[2]    Doing           | \n");
     printf("|[3]    Done            | \n");
-    printf("|_______________________|\n");
+    printf("|-----------------------|\n");
 }
 void AffichLalist(void)
 {
@@ -54,7 +54,7 @@ void Statistiques(void)
     printf("[3]_Afficher le nombre de jours restants jusqu'au délai de chaque tâche\n");
 }
 
-struct Tach
+struct Tach // pour stocker les information de chaque tach
 { // struct begin
     char title[30];
     char description[100];
@@ -65,13 +65,13 @@ struct Tach
 }; // struct end
 int main()
 { // main begin
-    struct Tach tach[100];
+    struct Tach tach[100]; // ici, nous avons applele la fucntion pour travailler avec ell a linterieur de main
     int choix, choix1, choix2, choix3, choix4, choix5, choix6;
-    int NumberTach, i, j;
-    char newdesc[200];
-    int newid;
-    char newtitle[40];
-    int Newjour, Newmois, Newanne;
+    int NumberTach, i, j; // ona declater 3 varible le premier pour savoir combien de taches lutilisateur souhaite saisir est le dernier deux pour les boukles
+    char newdesc[200]; // cett variable pour stocker le nouveau description
+    int newid; // nous aurons besoin de cette variable lorsque nous demanderons a lutilisateur de saisir l id de sa tache
+    char newtitle[40]; // le meme chose pour cett variable
+    int Newjour, Newmois, Newanne; // nous aurons besoin de cette variable lorsque lutilisateur souhaite changer la date
     struct Tach temp;
     time(&current_time);
     time_info = localtime(&current_time);
@@ -102,7 +102,7 @@ int main()
             switch (choix1)
             {
             case 1:
-                strcpy(tach[count].status, "To do");
+                strcpy(tach[count].status, "To do"); // strcpy pour copier les strings seulement
                 printf("the transformation went succesfuly \n");
                 break;
             case 2:
@@ -198,8 +198,7 @@ int main()
                     {
                         printf("le %d tach est :\n  id : %d \n Title:  %s \n description :  %s \n status : %s \n  le dead ligne : %d %d %d \n", i + 1, tach[i].id, tach[i].title, tach[i].description, tach[i].status, tach[i].jour, tach[i].mois, tach[i].anne);
                     }
-                    else
-                        printf("Nothing to show");
+
                 }
                 break;
             }
