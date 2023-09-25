@@ -268,7 +268,7 @@ int main()
                 break;
             }
             break;
-        case 5:
+        case 5: //supprime
             printf("entre the id of the tach you wanna delete : ");
             scanf("%d", &newid);
 
@@ -276,10 +276,12 @@ int main()
             {
                 if (tach[i].id == newid)
                 {
-                    tach[i] = tach[i + 1];
+                    for(j=1;j<count;j++){
+                        tach[j] = tach[j + 1];
+                    }
+                    count--;
                 }
             }
-            count--;
             break;
         case 6:
             Recherch();
