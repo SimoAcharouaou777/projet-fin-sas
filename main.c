@@ -5,9 +5,9 @@
 // projet fin de sas
 time_t current_time;
 struct tm *time_info;
-int count = 0; // to count how many tach are created or deleated
-int s=0; // to know how many tach done
-int z=0; // to know how many tach undone
+int count = 0; //pour calculer combien des tach lutilisaueur ajouter ou supprime
+int s=0; // pour calculer combien des tach finallese
+int z=0; // pour calculer combien des tach non finalese ( en cors de realisation est pour realise)
 void menu(void)
 {
     printf(" ___________________________________________________________________________________________________________\n");
@@ -65,14 +65,14 @@ struct Tach // pour stocker les information de chaque tach
 }; // struct end
 int main()
 { // main begin
-    struct Tach tach[100]; // ici, nous avons applele la fucntion pour travailler avec ell a linterieur de main
-    int choix, choix1, choix2, choix3, choix4, choix5, choix6;
+    struct Tach tach[100]; // ici, nous avons appele la fucntion pour travailler avec ell a linterieur de main
+    int choix; // pour stocker les choix de lutilisateur
     int NumberTach, i, j; // ona declater 3 varible le premier pour savoir combien de taches lutilisateur souhaite saisir est le dernier deux pour les boukles
     char newdesc[200]; // cett variable pour stocker le nouveau description
     int newid; // nous aurons besoin de cette variable lorsque nous demanderons a lutilisateur de saisir l id de sa tache
     char newtitle[40]; // le meme chose pour cett variable
     int Newjour, Newmois, Newanne; // nous aurons besoin de cette variable lorsque lutilisateur souhaite changer la date
-    struct Tach temp;
+    struct Tach temp; //voici la meme function que nous avons creer
     time(&current_time);
     time_info = localtime(&current_time);
     int day = time_info->tm_mday;
@@ -84,8 +84,8 @@ int main()
     { // do while begin
         menu();
         printf("sélectionner un numéro : ");
-        scanf("%d", &choix);
-        switch (choix)
+        scanf("%d", &choix); //choix
+        switch (choix) //choix
         { // switch begin
         case 1:
             printf("enter your tach id : ");
@@ -98,8 +98,8 @@ int main()
             scanf("%d %d %d", &tach[count].jour, &tach[count].mois, &tach[count].anne);
             printf("when do you wanna put it \n");
             NouvellTach();
-            scanf("%d", &choix1);
-            switch (choix1)
+            scanf("%d", &choix); //choix1
+            switch (choix) //choix1
             {
             case 1:
                 strcpy(tach[count].status, "To do"); // strcpy pour copier les strings seulement
@@ -132,8 +132,8 @@ int main()
                 scanf("%d %d %d", &tach[count].jour, &tach[count].mois, &tach[count].anne);
                 printf("when do you wanna put your %d tach  \n", i);
                 NouvellTach();
-                scanf("%d", &choix1);
-                switch (choix1)
+                scanf("%d", &choix); //choix1
+                switch (choix) //choix1
                 {
                 case 1:
                     strcpy(tach[count].status, "To do");
@@ -154,8 +154,8 @@ int main()
         case 3:
             AffichLalist();
             printf("_____________selectionner un numero : ");
-            scanf("%d", &choix2);
-            switch (choix2)
+            scanf("%d", &choix); //choix2
+            switch (choix) //CHOIX2
             {
             case 1:
                 for (i = 0; i < count; i++)
@@ -206,8 +206,8 @@ int main()
         case 4:
             ModifieTach();
             printf("_____________selectionner un numero : ");
-            scanf("%d", &choix3);
-            switch (choix3)
+            scanf("%d", &choix); //CHOIX 3
+            switch (choix) //CHOIX3
             {
             case 1:
                 printf("entrer the id of the tach you wanna modifie : ");
@@ -231,8 +231,8 @@ int main()
                     {
                         NouvellTach();
                         printf("\n when do you wanna put it : ");
-                        scanf("%d", &choix6);
-                        switch (choix6)
+                        scanf("%d", &choix); //CHOIX6
+                        switch (choix) //6
                         {
                         case 1:
                             strcpy(tach[i].status, "TO DO");
@@ -276,7 +276,7 @@ int main()
             {
                 if (tach[i].id == newid)
                 {
-                    for(j=1;j<count;j++){
+                    for(j=i;j<count;j++){
                         tach[j] = tach[j + 1];
                     }
                     count--;
@@ -286,8 +286,8 @@ int main()
         case 6:
             Recherch();
             printf("_____________selectionner un numero : ");
-            scanf("%d", &choix4);
-            switch (choix4)
+            scanf("%d", &choix); //4
+            switch (choix) //4
             {
             case 1:
                 printf("enter the id of your tach : ");
@@ -326,8 +326,8 @@ int main()
         case 7:
             Statistiques();
             printf("_____________selectionner un numero : ");
-            scanf("%d", &choix5);
-            switch (choix5)
+            scanf("%d", &choix); //5
+            switch (choix) //5
             {
             case 1:
                 printf("number of your taches are : %d \n", count);
